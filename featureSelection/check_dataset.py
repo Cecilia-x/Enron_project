@@ -5,6 +5,7 @@ This module inspects 0 value of the dataset.
 import sys
 sys.path.append("../tools/")
 import loadEnron
+import pickle
 
 DATA = loadEnron.load()
 
@@ -54,3 +55,8 @@ Printed out result:
   loan_advances, 141
   director_fees, 129
 """
+
+DATA.pop('LAY KENNETH L', 0)
+DATA.pop('LOCKHART EUGENE E', 0)
+with open("../data/data_processed.pkl", 'wb') as f:
+    pickle.dump(DATA, f)
