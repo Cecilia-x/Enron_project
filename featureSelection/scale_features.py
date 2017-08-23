@@ -27,7 +27,7 @@ def get_extent(data, features):
     return result
 
 scale_vars = ['total_stock_value', 'incentives', 'salary', 
-                  'deferred_income', 'expenses', 'other']
+                  'deferred_income', 'expenses', 'director_fees']
 ext_dict = get_extent(data, scale_vars)
 
 def scaler(profile, feature, ext_dict=ext_dict):
@@ -42,7 +42,7 @@ def profile_scaler(profile, scale_fts=scale_vars):
     return profile
     
 data = modify_profile(data, profile_scaler)
-print data[data.keys()[0]]
+
 with open("../data/data_scaled.pkl", 'wb') as f:
     pickle.dump(data, f)
 
